@@ -66,6 +66,7 @@ public class RoomManager : MonoBehaviour
                         var prop = Instantiate(gObject, propcontainer.transform, true);
                         var draggabable=prop.GetComponent<Draggable>();
                         draggabable.Prefab = gObject;
+                        draggabable.tilemap = tilemap;
                         
                         var pos = prop.transform.position;
                         pos.x = object2D.PositionX;

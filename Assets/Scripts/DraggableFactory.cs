@@ -18,8 +18,15 @@ public class DraggableFactory: Draggable
     {
         if (_draggingObject)
         {
-            //Drags while holding down, adds the offset to not let the item's middle snap to the cursor
-            DragObject(_trans, GetMousePosition(), new());
+            try
+            {
+                //Drags while holding down, adds the offset to not let the item's middle snap to the cursor
+                DragObject(_trans, GetMousePosition(), new());
+            }
+            catch
+            {
+                // ignored
+            }
         }
     }
     

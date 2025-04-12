@@ -131,6 +131,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Repeat Password
       objectReference: {fileID: 0}
+    - target: {fileID: 2177084016607382949, guid: 56c85cd0c78dc124a91f2a4689d62af9, type: 3}
+      propertyPath: m_InputType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177084016607382949, guid: 56c85cd0c78dc124a91f2a4689d62af9, type: 3}
+      propertyPath: m_ContentType
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2571398651363145387, guid: 56c85cd0c78dc124a91f2a4689d62af9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -821,7 +829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c6bb9c956f4bc184d6f5bd78558950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseUrl: https://localhost:7082
+  baseUrl: avans.tominhisroom.dev
   defaultLoginScene: Login
 --- !u!1 &922714565
 GameObject:
@@ -948,6 +956,14 @@ PrefabInstance:
     - target: {fileID: 1711876902932174368, guid: 56c85cd0c78dc124a91f2a4689d62af9, type: 3}
       propertyPath: m_text
       value: Password
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177084016607382949, guid: 56c85cd0c78dc124a91f2a4689d62af9, type: 3}
+      propertyPath: m_InputType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177084016607382949, guid: 56c85cd0c78dc124a91f2a4689d62af9, type: 3}
+      propertyPath: m_ContentType
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2571398651363145387, guid: 56c85cd0c78dc124a91f2a4689d62af9, type: 3}
       propertyPath: m_Pivot.x

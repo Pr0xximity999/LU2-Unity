@@ -44,8 +44,7 @@ public class Draggable: MonoBehaviour
 
         var cellPosition = tilemap.WorldToCell(targetPosition);
         TileBase tile = tilemap.GetTile(cellPosition);
-
-        Debug.Log(tile.name.ToLower());
+        
         //Only move items on wood
         if (tile.name.ToLower().Contains("wood"))
         {
@@ -55,7 +54,6 @@ public class Draggable: MonoBehaviour
 
     public void OnMouseDown()
     {
-        Debug.Log("MouseDown");
         //Gotta do it twice becasue otherwise id move all movables in the scene
         _draggingObject = true;
         DraggingObject = true;

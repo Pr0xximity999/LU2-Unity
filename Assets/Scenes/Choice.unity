@@ -934,7 +934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c6bb9c956f4bc184d6f5bd78558950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseUrl: https://localhost:7082
+  baseUrl: avans.tominhisroom.dev
   defaultLoginScene: Login
 --- !u!114 &965635747
 MonoBehaviour:
