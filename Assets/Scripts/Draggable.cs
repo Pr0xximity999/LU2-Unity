@@ -27,8 +27,15 @@ public class Draggable: MonoBehaviour
     {
         if (_draggingObject)
         {
-            //Drags while holding down, adds the offset to not let the item's middle snap to the cursor
-            DragObject(trans, GetMousePosition() ,_offset);
+            try
+            {
+                //Drags while holding down, adds the offset to not let the item's middle snap to the cursor
+                DragObject(trans, GetMousePosition() ,_offset);
+            }
+            catch 
+            {
+                // nothing ever happens
+            }
         }
     }
 
