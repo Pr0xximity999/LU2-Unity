@@ -28,8 +28,16 @@ public class DraggableFactory: Draggable
         _draggingObject = true;
         DraggingObject = true;
         
-        //Spawns an object set by the serialized input field
-        var spawnedObject = Instantiate(spawnObject);
+        //Spawns an object at the cursor
+        var propcontainer = GameObject.Find("Prop container");
+        var spawnedObject = Instantiate(spawnObject, propcontainer.transform, true);
+        _deletedSelf = spawnedObject;
+        
+        //Set prefab data in the prop
+        var draggable = spawnedObject.GetComponent<Draggable>();
+        draggable.Prefab = spawnObject;
+        draggable.tilemap = tilemap;
+
         
         //Set the transform used when dragging to the spawned object
         _trans = spawnedObject.transform;

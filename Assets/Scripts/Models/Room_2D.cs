@@ -1,4 +1,6 @@
-﻿namespace DefaultNamespace.Models
+﻿using System.Collections.Generic;
+
+namespace DefaultNamespace.Models
 {
     public class Room_2D 
     {
@@ -8,5 +10,6 @@
         public float MaxLength { get; set; }
         public float MaxHeight { get; set; }
         public int Position { get; set; }
+        public List<Object_2D> objects { get; set; }
     }
 }

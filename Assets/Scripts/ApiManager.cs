@@ -56,6 +56,7 @@ namespace DefaultNamespace
                     if (!HandleLoginError(req.downloadHandler.text, GetErrorRequest(req, callback), true))
                     {
                         Debug.LogError(GetErrorRequest(req, callback));
+                        callback?.Invoke(null, GetErrorRequest(req, callback));
                     }
                     else
                     {

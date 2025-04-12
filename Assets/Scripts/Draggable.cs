@@ -1,7 +1,10 @@
 using System;
+using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.Tilemaps;
 
 /*
 * The GameObject also needs a collider otherwise OnMouseUpAsButton() can not be detected.
@@ -9,14 +12,19 @@ using UnityEngine;
 public class Draggable: MonoBehaviour
 {
     public Transform trans;
-    private Vector3 _offset;
     public static bool DraggingObject = false;
+    public int ZOffset;
+    public Tilemap tilemap;
+    
     protected bool _draggingObject = false;
-
+    protected GameObject _deletedSelf;
+    public GameObject Prefab;
+    
+    private Vector3 _offset;
+    
     
     public void Update()
     {
-        DraggingObject = _draggingObject;
         if (_draggingObject)
         {
             //Drags while holding down, adds the offset to not let the item's middle snap to the cursor
@@ -29,15 +37,25 @@ public class Draggable: MonoBehaviour
         var realPositon = targetPosition + offset;
         
         //Snaps the location to the grid
-        realPositon.x = (float)Math.Round(realPositon.x, 0);
-        realPositon.y = (float)Math.Round(realPositon.y, 0);
-        realPositon.z = (float)Math.Round(realPositon.z, 0);
+        realPositon.x = (float)Math.Round(realPositon.x, 1);
+        realPositon.y = (float)Math.Round(realPositon.y, 1);
+        realPositon.z = (realPositon.y - ZOffset) / 10; //Layering of depth
         var gridposition = realPositon;
-        trans.position = gridposition;
+
+        var cellPosition = tilemap.WorldToCell(targetPosition);
+        TileBase tile = tilemap.GetTile(cellPosition);
+
+        Debug.Log(tile.name.ToLower());
+        //Only move items on wood
+        if (tile.name.ToLower().Contains("wood"))
+        {
+            trans.position = gridposition; 
+        }
     }
 
-    private void OnMouseDown()
+    public void OnMouseDown()
     {
+        Debug.Log("MouseDown");
         //Gotta do it twice becasue otherwise id move all movables in the scene
         _draggingObject = true;
         DraggingObject = true;
@@ -51,6 +69,18 @@ public class Draggable: MonoBehaviour
         //Gotta do it twice becasue otherwise id move all movables in the scene
         _draggingObject = false;
         DraggingObject = false;
+        
+        //Destroys object when it touches the destroy objects
+        foreach (var gObject in GameObject.FindGameObjectsWithTag("PropDestroyer"))
+        {
+            //If the mouse hovers over a blacklisted item, stop doing the scroll and move
+            RectTransform rectTransform = gObject.GetComponent<RectTransform>();
+            if (rectTransform != null &&
+                RectTransformUtility.RectangleContainsScreenPoint(rectTransform, Input.mousePosition, null))
+            {
+                Destroy(_deletedSelf ?? gameObject); //byebye
+            }
+        }
     }
 
     /// <summary>

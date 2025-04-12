@@ -31,13 +31,11 @@ public class CameraMover : MonoBehaviour
                 if (rectTransform != null &&
                     RectTransformUtility.RectangleContainsScreenPoint(rectTransform, Input.mousePosition, null))
                 {
-                    Debug.Log("locked");
                     locked = true;
                     return;
                 }
                 else if(!Input.GetMouseButton(0))
                 {
-                    Debug.Log("unlocked");
                     locked = false;
                 }
             }
