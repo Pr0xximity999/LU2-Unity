@@ -12,8 +12,6 @@ public class RoomChoiceManager : MonoBehaviour
     private List<Room_2D> _rooms;
     private ApiManager _apiManager;
     private string[] roomIds = new string[5];
-
-    public TextMeshProUGUI usernameBar;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
